@@ -25,4 +25,20 @@ databaseChangeLog() {
       dropTable(tableName:"videos")
     }
   }
+  
+  changeSet( author: "bobby", id: "changeset 2-26-2016 10:27" ){
+    comment("creating index's for columns")
+    createIndex( indexName: "video_name_index", tableName: "videos", unique: "false" ) {
+      column( name: "video_name" )
+    }
+    createIndex( indexName: "added_by_index", tableName: "videos", unique: "false" ) {
+      column( name: "added_by" )
+    }
+    createIndex( indexName: "date_added_index", tableName: "videos", unique: "false" ) {
+      column( name: "date_added" )
+    }
+    createIndex( indexName: "language_index", tableName: "videos", unique: "false" ) {
+      column( name: "language" )
+    }
+  }
 }
