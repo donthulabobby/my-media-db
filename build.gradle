@@ -62,12 +62,16 @@ artifacts {
 }
 
 liquibase {
+
+  Properties props = new Properties()
+  props.load(new FileInputStream("/etc/bobbysnehacorp/mymediaapp/mymediaapp.db.properties"))
+ 
   activities {
     main {
       changeLogFile 'src/main/db/changelogs.groovy'
-      url 'jdbc:mysql://localhost:3306/mymedia'
-      username 'bobby'
-      password 'bobbybobby'
+      url props.getProperty('url')
+      username props.getProperty('username')
+      password props.getProperty('password')
     }
   }
 }
